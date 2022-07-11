@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState } from "react";
+import TodoInput from "./TodoInput";
+import TodoList from "./TodoList";
 
  
 function App() {
@@ -23,34 +25,9 @@ function App() {
   return (
     <div className="App">
       <h1>React Todo App</h1>
+      <TodoInput todo={todo} setTodo={setTodo} addTodo={addTodo} />
+      <TodoList list={todos} remove={deleteTodo}/>   
       
-      <div className="input-wrapper">
-        <input 
-        type="text" name="todo"
-        value={todo} 
-        placeholder="Create a new todo"
-        // Create a New Todo Item
-        onChange={(e) => {
-          setTodo(e.target.value);
-        }} />
-        <button className="add-button" onClick={addTodo}>Add</button>
-      </div>
-
-      {/* Displaying Todo Items */}
-      {todos?.length > 0 ? (
-        <ul className="todo-list">
-          {todos.map((todo, index) => (
-            <div className="todo">
-              <li key={index}> { todo }</li>
-              <button className="delete-button" onClick={() => {deleteTodo(todo);}}>Delete</button>
-            </div>
-          ))}
-        </ul>
-      ) : (
-        <div className="empty">
-          <p>No task found</p>
-        </div>
-      )}
     </div>
   );
 }
