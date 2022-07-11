@@ -13,6 +13,13 @@ function App() {
       setTodo('');
     }
   }
+  // create a new Todos array containing all the elements except for the one being removed.
+  const deleteTodo = (text) => {
+    const newTodos = todos.filter((todo) => {
+      return todo !== text;
+    });
+    setTodos(newTodos);
+  }
   return (
     <div className="App">
       <h1>React Todo App</h1>
@@ -35,7 +42,7 @@ function App() {
           {todos.map((todo, index) => (
             <div className="todo">
               <li key={index}> { todo }</li>
-              <button className="delete-button">Delete</button>
+              <button className="delete-button" onClick={() => {deleteTodo(todo);}}>Delete</button>
             </div>
           ))}
         </ul>
