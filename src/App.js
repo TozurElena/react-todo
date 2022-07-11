@@ -28,6 +28,22 @@ function App() {
         }} />
         <button className="add-button" onClick={addTodo}>Add</button>
       </div>
+
+      {/* Displaying Todo Items */}
+      {todos?.length > 0 ? (
+        <ul className="todo-list">
+          {todos.map((todo, index) => (
+            <div className="todo">
+              <li key={index}> { todo }</li>
+              <button className="delete-button">Delete</button>
+            </div>
+          ))}
+        </ul>
+      ) : (
+        <div className="empty">
+          <p>No task found</p>
+        </div>
+      )}
     </div>
   );
 }
